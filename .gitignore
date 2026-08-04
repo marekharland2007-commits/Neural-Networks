@@ -2,3 +2,4 @@ ml-env-312/
 data/
 mnistDigitModel/data/
 imageClassifier/data/
+.vscode/
