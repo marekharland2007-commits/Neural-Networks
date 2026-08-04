@@ -1,0 +1,13 @@
+Epochs: 75
+Warmup Epochs: 5
+Batch size: 1024
+Learning rate: 0.25
+Dropout: 0
+Weight Decay: 0.0005
+Momentum: 0.9
+
+Training time: 1381.86 seconds
+
+Final Train Accuracy: 0.9997
+Final Valid Accuracy: 0.7574
+Final Test Accuracy: 0.7484
