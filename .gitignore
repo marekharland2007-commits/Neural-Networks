@@ -3,3 +3,5 @@ data/
 mnistDigitModel/data/
 imageClassifier/data/
 .vscode/
+**/__pycache__/
+*.pyc
