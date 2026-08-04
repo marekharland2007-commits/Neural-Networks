@@ -1,9 +1,11 @@
 import tkinter as tk
+from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageOps
 import torch
 from digitModel import CNNNet
 
+BASE_DIR = Path(__file__).resolve().parent
 CANVAS_SIZE = 280
 MODEL_INPUT = 28
 BRUSH_RADIUS = 10
@@ -11,7 +13,8 @@ BRUSH_RADIUS = 10
 device = torch.device("cpu")
 
 model = CNNNet().to(device)
-state_dict = torch.load("digit_model_pytorch.pth", map_location=device)
+state_dict_path = BASE_DIR / "digit_model_pytorch.pth"
+state_dict = torch.load(state_dict_path, map_location=device)
 model.load_state_dict(state_dict)
 model.eval()
 
@@ -129,8 +132,9 @@ class DigitApp:
         self.top3_var.set("Top 3 guesses\n" + "\n".join(lines))
 
     def save_png(self):
-        self.image.save("digit_canvas.png")
-        self.result_var.set("Saved current drawing as digit_canvas.png")
+        output_path = BASE_DIR / "digit_canvas.png"
+        self.image.save(output_path)
+        self.result_var.set(f"Saved current drawing as {output_path.name}")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,11 @@
 import tkinter as tk
+from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageOps
 import torch
 from digitModel import UpgradedCNNNet
+
+BASE_DIR = Path(__file__).resolve().parent
 
 CANVAS_SIZE = 280
 MODEL_INPUT = 28
@@ -11,7 +14,8 @@ BRUSH_RADIUS = 5
 device = torch.device("cpu")
 
 model = UpgradedCNNNet().to(device)
-state_dict = torch.load("digit+letter_model_pytorch.pth", map_location=device)
+state_dict_path = BASE_DIR / "digit+letter_model_pytorch.pth"
+state_dict = torch.load(state_dict_path, map_location=device)
 model.load_state_dict(state_dict)
 model.eval()
 

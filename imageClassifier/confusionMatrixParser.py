@@ -1,10 +1,13 @@
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+BASE_DIR = Path(__file__).resolve().parent
+
 # Path to your confusion matrix CSV
-csv_path = "CIFAR10_confusion_matrix.csv"
+csv_path = BASE_DIR / "CIFAR10_confusion_matrix.csv"
 
 # Read CSV:
 # First column = actual labels
