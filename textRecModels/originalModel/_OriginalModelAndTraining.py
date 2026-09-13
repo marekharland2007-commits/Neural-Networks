@@ -29,7 +29,7 @@ def softmax(z):
 
 def load_mnist():
 
-    dataPath = currentDir / "Data" / "mnist.pkl.gz"
+    dataPath = currentDir / "data" / "mnist.pkl.gz"
 
     if not dataPath.exists():
         url = "https://github.com/mnielsen/neural-networks-and-deep-learning/raw/master/data/mnist.pkl.gz"
