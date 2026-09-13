@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageOps
 import torch
-from digitModel import UpgradedCNNNet
+from textRecModels.torchModels.digitModel import UpgradedCNNNet
 
 BASE_DIR = Path(__file__).resolve().parent
 

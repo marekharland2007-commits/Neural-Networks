@@ -2,6 +2,12 @@ import numpy as np
 import gzip
 import pickle
 
+from pathlib import Path
+
+currentDir = Path(__file__).resolve().parent
+
+import urllib.request
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
@@ -22,7 +28,15 @@ def softmax(z):
     return exp_z / np.sum(exp_z, axis=1, keepdims=True)
 
 def load_mnist():
-    with gzip.open('mnist.pkl.gz', 'rb') as f:
+
+    dataPath = currentDir / "Data" / "mnist.pkl.gz"
+
+    if not dataPath.exists():
+        url = "https://github.com/mnielsen/neural-networks-and-deep-learning/raw/master/data/mnist.pkl.gz"
+        urllib.request.urlretrieve(url, dataPath)
+        print("Successfully downloaded mnist.pkl.gz")
+
+    with gzip.open(dataPath, 'rb') as f:
         train_set, valid_set, test_set = pickle.load(f, encoding='latin1')
     return train_set, valid_set, test_set
 
@@ -189,5 +203,10 @@ if __name__ == "__main__":
     "b3": b3
     }
 
-    with open("digit_model.pkl", "wb") as f:
+    with open(currentDir / "digit_model.pkl", "wb") as f:
         pickle.dump(weights, f)
+
+    with open(currentDir / "lastTraining.txt", "w") as f:
+        print(f"learning_rate: {learning_rate:.4f}, epochs: {epochs:.0f}", file=f)
+        print(f"Train_accuracy: {train_accuracy:.4f}, Valid_accuracy: {valid_accuracy:.4f}, Test_accuracy: {test_accuracy:.4f}", file=f)
+

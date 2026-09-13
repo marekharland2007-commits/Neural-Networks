@@ -10,7 +10,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.metrics import confusion_matrix
 
-from digitModel import UpgradedCNNNet
+from textRecModels.torchModels.digitModel import UpgradedCNNNet
 
 torch.backends.cudnn.benchmark = True
 

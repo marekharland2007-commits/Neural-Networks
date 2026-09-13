@@ -1,0 +1,2 @@
+learning_rate: 0.7500, epochs: 10
+Train_accuracy: 0.7647, Valid_accuracy: 0.7896, Test_accuracy: 0.7798
