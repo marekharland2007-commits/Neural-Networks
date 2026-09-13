@@ -9,10 +9,14 @@ along with implementing versions of the alphabet CNN to develop a note taking ap
 Requires Python 3.12 to run the torch CUDA version required for my laptop GPU. All other requirements are stored in requirements.txt
 For CUDA to work on my laptop, I needed to use torch from https://download.pytorch.org/whl/cu126. Running 
 
-'''python -m pip install -r requirements.txt'''
+'''sh
+python -m pip install -r requirements.txt
+'''
 
 fails to install this version. 
 
 Must separately run: 
 
-'''pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126'''
+'''sh
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+'''
