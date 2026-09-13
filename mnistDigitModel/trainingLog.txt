@@ -1,4 +1,0 @@
-
-Final Train Accuracy: 0.9293
-Final Valid Accuracy: 0.9087
-Final Test Accuracy: 0.9073
