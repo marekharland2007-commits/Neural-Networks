@@ -18,7 +18,6 @@ def relu_derivative(z):
     return (z > 0).astype(float)
 
 def softmax(z):
-    """Numerically stable softmax"""
     exp_z = np.exp(z - np.max(z, axis=1, keepdims=True))
     return exp_z / np.sum(exp_z, axis=1, keepdims=True)
 
@@ -28,6 +27,7 @@ def load_mnist():
     return train_set, valid_set, test_set
 
 def init_network_architecture(input_size, hidden_size1, hidden_size2, output_size):
+    """Initialize weights and biases for a 3-layer neural network using He initialization for ReLU activations."""
     W1 = np.random.randn(input_size, hidden_size1) * np.sqrt(2.0 / input_size)
     b1 = np.zeros((1, hidden_size1))
 
